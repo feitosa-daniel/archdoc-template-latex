@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper,oneside]{report}
+
+\usepackage[top=30mm, bottom=25mm, left=30mm, right=38mm]{geometry}
+
+% Text and fonts
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{wasysym}
+\usepackage{marvosym}
+\usepackage{palatino}
+
+% Add capitalisation to autoref names to follow writing style guide
+\addto\extrasenglish{
+  \def\chapterautorefname{Chapter}
+  \def\sectionautorefname{Section}
+  \def\subsectionautorefname{Section}
+  \def\subsubsectionautorefname{Section}
+  \def\itemautorefname{Item}
+  \def\paragraphautorefname{Paragraph}
+  \def\footnoteautorefname{Footnote}
+  \def\pageautorefname{Page}
+}
+
+% Figures & Tables
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{tablefootnote}
+
+% Refs and links
+\usepackage{xurl}
+\usepackage[linktocpage=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[acronym]{glossaries}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    citecolor=red,
+    urlcolor=RoyalPurple
+}
+
+% Misc
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+% \usepackage{minted}
+\usepackage{csquotes}
+\usepackage{titlesec}
+\usepackage[detect-all]{siunitx}
+\usepackage{changepage}
+
+\usepackage{todonotes}
+
+\setlength{\marginparwidth}{2cm}
+
+% Redefine marks to remove uppercase
+\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter \, |\,}{2pc}{}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection}{1pc}{}
+\titleformat{\subsection}[hang]{\large\bfseries}{\thesubsection}{1pc}{}
+
+% Patch \chaptermark and \sectionmark to avoid uppercase
+\makeatletter
+\patchcmd{\chaptermark}{\MakeUppercase}{}{}{}
+\patchcmd{\sectionmark}{\MakeUppercase}{}{}{}
+\makeatother
+
+\sisetup{group-separator={,},group-minimum-digits={3},output-decimal-marker={.}}
+
+\interfootnotelinepenalty=10000
+
+
+%%
+%% CONTENT
+%%
+
+% \setcounter{tocdepth}{1}
+
+\begin{document}
+
+%%
+%% TITLE PAGE
+%%
+
+% Because for some reason Hyperref is not compatible with titlepages.
+\hypersetup{pageanchor=false}
+
+\begin{titlepage}
+\newgeometry{margin = 1in}
+\vspace*{1in}
+\begin{center}
+{\Huge \scshape {\color{red}SYSTEM NAME}}
+\\[1in]
+Students:\\
+Maria Doe (S999998)\\
+John Doe (S999999)
+\vfill
+{\small Last build: \today}
+\\[0.5in]
+{\scshape Version 0.1}
+\\[0.5in]
+
+\vspace*{1in}
+
+\end{center}
+
+\restoregeometry
+\end{titlepage}
+
+\cleardoublepage
+
+% \input{glossary}
+
+\section*{Revision History}
+
+Contributors:
+\begin{itemize}
+    \item md: Maria Doe
+    \item jd: John Doe
+\end{itemize}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllp{8cm}}
+\toprule
+\textbf{Date} & \textbf{Revision} & \textbf{Author} & \textbf{Description} \\
+\midrule
+2024-09-05 & 1.0 & md & Initial draft\\
+2024-09-13 & 1.1 & jd & Added X to System Context\\
+           &     & md & Revised competitors\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\cleardoublepage
+
+\hypersetup{pageanchor=true}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% List of Figures
+\listoffigures
+\newpage
+
+% List of Tables
+\listoftables
+\newpage
+
+%
+% CHAPTERS
+%
+\include{chapters/01-system_context.tex}
+
+\include{chapters/02-business_information.tex}
+
+\include{chapters/03-requirements.tex}
+
+\include{chapters/04-analysis.tex}
+
+\include{chapters/05-system_architecture.tex}
+
+\include{chapters/06-hardware_architecture.tex}
+
+\include{chapters/07-software_architecture.tex}
+
+\include{chapters/08-architecture_evaluation.tex}
+
+\include{chapters/09-system_evolution.tex}
+
+% Bibliography
+\printbibliography[heading=bibintoc,title={References}]
+
+%
+% APPENDICES
+%
+\appendix
+
+% ADRs
+\chapter{Architecture Decision Records}
+\label{ch:a1:adrs}
+\include{adrs/adr01.tex}
+\include{adrs/adr02.tex}
+
+% TIME TRACKING
+\include{chapters/a2-timetracking.tex}
+
+% LATEX TIPS
+\include{chapters/a9-latex_tips}
+
+\end{document}
