@@ -19,7 +19,9 @@ are solved already. Adding your content should be fairly straightforward
 
 ## Tracking Changes
 
-The template uses the `todonotes` package to track changes.
+The course requires that updates to the document throughout the weeks are tracked.
+To generate a PDF with the changes highlighted, you can use the [`latexdiff`](https://ctan.org/pkg/latexdiff) tool. 
+If you are using Overleaf, there are guidelines to use `latexdiff` [here](https://www.overleaf.com/learn/latex/Articles/How_to_use_latexdiff_on_Overleaf).
 
 ## License
 
