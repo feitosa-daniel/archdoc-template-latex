@@ -1,6 +1,6 @@
 # Architecture Document
 
-This repository contains a LaTeX template for a typical architecture document. This template is tailored for the course https://ocasys.rug.nl/current/catalog/course/WMCS004-05[Software Architecture (WMCS004-05)] of the University of Groningen.
+This repository contains a LaTeX template for a typical architecture document. This template is tailored for the course [Software Architecture (WMCS004-05)](https://ocasys.rug.nl/current/catalog/course/WMCS004-05) of the University of Groningen.
 
 ## Generating a PDF
 
